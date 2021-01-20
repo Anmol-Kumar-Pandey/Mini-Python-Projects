@@ -7,18 +7,19 @@ today = date.today()
 while True:
     ask = input("What do you want to do?\n")
         
+    # List Directories
+    if ask == "ls":
+        for files in os.listdir():
+            print(files, end=", ")
+        print()
+        continue
+
     if ask == "files":
         Task = input("What do you want to do in this folder?\n")
 
-        # List Directories
-        if Task == "ls":
-            for files in os.listdir():
-                print(files, end=", ")
-            print()
-            continue
 
         # Create Files
-        elif Task == "create":
+        if Task == "create":
             name = input("Enter the name of the file: ")
             f = open(name, "x")
             f.close()
@@ -62,7 +63,45 @@ while True:
 
     # Maths Condition
     elif ask == "Maths":
-        print("You completed Maths Services")
+        while True:
+            tell = input("Enter what should I do: ")
+            if tell == "callc":
+                math_quantity = int(input("How many numbers do you want to enter?\n"))
+
+                numbers_align = []
+                i = 0
+                while i < math_quantity:
+                    num = int(input("Enter your number: "))
+                    i += 1
+                    numbers_align.append(num)
+                # print(numbers_align)
+                
+            total = 0
+            if tell == "add":
+                for q in numbers_align:
+                    total += q
+                print(total)
+
+            elif tell == "sub":
+                for q in numbers_align:
+                    total -= q
+                print(total)
+
+            elif tell == "prod":
+                for q in numbers_align:
+                    total *= q
+                print(total)
+
+            elif tell == "div":
+                for q in numbers_align:
+                    total /= q
+                print(total)
+
+            elif tell == "q":
+                break
+
+
+        print("You got out of our Maths Services")
         continue
 
     else:
